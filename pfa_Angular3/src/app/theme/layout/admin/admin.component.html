@@ -1,0 +1,33 @@
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <app-simple-nav></app-simple-nav>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- NAVBAR TOP FLEX -->
+    <header class="navbar" [class.scrolled]="isScrolled">
+
+      <!-- LEFT -->
+      <div class="navbar-left">
+        <button class="icon-btn" (click)="toggleFullscreen()">
+  <i class="feather"
+     [ngClass]="screenFull ? 'icon-minimize' : 'icon-maximize'">
+  </i>
+</button>
+
+        <app-nav-search></app-nav-search>
+      </div>
+
+    
+
+    </header>
+
+    <!-- CONTENT -->
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+
+  </div>
+</div>

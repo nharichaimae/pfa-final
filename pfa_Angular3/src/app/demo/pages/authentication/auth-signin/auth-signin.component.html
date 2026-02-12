@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center align-items-center vh-100" 
+     style="background: linear-gradient(135deg, #6a11cb, #2575fc);">
+  <div class="card shadow-lg p-4" style="width: 400px; border-radius: 15px; border: none;">
+    <h3 class="card-title text-center mb-4" style="color: #2575fc;">Connexion</h3>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <!-- Email -->
+      <div class="mb-3">
+        <input
+          type="email"
+          formControlName="email"
+          class="form-control form-control-lg"
+          placeholder="Email Address"
+          [class.is-invalid]="submitted && email()?.invalid"
+          style="border: 2px solid #6a11cb;"
+        />
+        <div *ngIf="submitted && email()?.invalid" class="invalid-feedback">
+          <div *ngIf="email()?.errors?.['required']">Email requis</div>
+          <div *ngIf="email()?.errors?.['email']">Email invalide</div>
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <input
+          type="password"
+          formControlName="password"
+          class="form-control form-control-lg"
+          placeholder="Mot de passe"
+          [class.is-invalid]="submitted && password()?.invalid"
+          style="border: 2px solid #6a11cb;"
+        />
+        <div *ngIf="submitted && password()?.invalid" class="invalid-feedback">
+          <div *ngIf="password()?.errors?.['required']">Mot de passe requis</div>
+          <div *ngIf="password()?.errors?.['minlength']">Minimum 8 caractères</div>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" 
+              class="btn w-100 btn-lg text-white" 
+              style="background: #2575fc; border: none; transition: background 0.3s;">
+        Se connecter
+      </button>
+
+      <!-- Error Message -->
+      <div class="text-danger mt-3 text-center">{{ errorMessage }}</div>
+    </form>
+
+    <div class="text-center mt-3">
+      <small style="color: #555;">
+        Pas encore de compte ? <a href="/register" style="color: #6a11cb;">Inscrivez-vous</a>
+      </small>
+    </div>
+  </div>
+</div>
