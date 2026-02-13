@@ -2,8 +2,7 @@
 
 namespace App\Repository\auth;
 
-use App\DTO\auth\LoginResponseDTO;
-use App\DTO\auth\UserResponseDTO;
+use App\Entity\user\Utilisateur;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 interface IUser
@@ -13,5 +12,5 @@ interface IUser
         string $email,
         string $password,
         UserPasswordHasherInterface $passwordHasher
-    ): ?LoginResponseDTO;
+    ): ?Utilisateur;
 }

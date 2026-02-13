@@ -10,7 +10,7 @@ parameters:
 
 services:
     # Déclare le controller AuthController comme service
-    App\Controller\AuthController:
+    App\Controller\auth\AuthController:
     
         arguments:
             $jwtEncoder: '@lexik_jwt_authentication.encoder'

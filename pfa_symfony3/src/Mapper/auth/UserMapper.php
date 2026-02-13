@@ -14,15 +14,8 @@ class UserMapper
             true,
             $token,
             $user->getId(),
-            $user->getEmail()
-        );
-    }
-
-    public static function toUserResponse(Utilisateur $user): UserResponseDTO
-    {
-        return new UserResponseDTO(
-            $user->getId(),
-            $user->getEmail()
+            $user->getEmail(),
+            $user->getRole() 
         );
     }
 }

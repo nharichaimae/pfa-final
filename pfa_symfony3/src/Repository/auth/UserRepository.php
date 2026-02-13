@@ -15,19 +15,17 @@ class UserRepository extends ServiceEntityRepository implements IUser
     {
         parent::__construct($registry, Utilisateur::class);
     }
-    public function login(string $email, string $password, UserPasswordHasherInterface $passwordHasher): ?LoginResponseDTO
-    {
-        $user = $this->findOneBy(['email' => $email]);
-        if (!$user || !$passwordHasher->isPasswordValid($user, $password)) {
-            return null;
-        }
-        return new LoginResponseDTO(
-            true,
-            '', 
-            $user->getId(),
-            $user->getEmail(),
-            $user->getRole()
-        );
+// UserRepository.php
+public function login(string $email, string $password, UserPasswordHasherInterface $passwordHasher): ?Utilisateur
+{
+    $user = $this->findOneBy(['email' => $email]);
+
+    if (!$user || !$passwordHasher->isPasswordValid($user, $password)) {
+        return null;
     }
+
+    return $user; // ✅ retourne l'entité, pas le DTO
+}
+
 }
 
